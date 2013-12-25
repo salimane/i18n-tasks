@@ -26,7 +26,7 @@ module I18n::Tasks::Configuration
     end
   end
 
-  DEFAULT_PATTERN = /\bt[( ]\s*(:?".+?"|:?'.+?'|:\w+)/
+  DEFAULT_PATTERN = /\bt(?:ranslate)?[( ]\s*(:?".+?"|:?'.+?'|:\w+)/
   # search config
   # @return [Hash{String => String,Hash,Array}]
   def search_config
@@ -43,6 +43,14 @@ module I18n::Tasks::Configuration
         conf[:pattern] = conf[:pattern].present? ? Regexp.new(conf[:pattern]) : DEFAULT_PATTERN
       end
     end
+  end
+
+  def relative_roots
+    @config_sections[:relative_roots] ||= config[:relative_roots].presence || %w(app/views)
+  end
+
+  def relative_roots=(paths)
+    @config_sections[:relative_roots] = paths
   end
 
   # translation config

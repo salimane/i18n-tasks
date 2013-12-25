@@ -161,6 +161,18 @@ search:
   pattern: "\\bt[( ]\\s*(:?\".+?\"|:?'.+?'|:\\w+)"
 ```
 
+To configure paths for relative key resolution:
+
+```yaml
+# directories containing relative keys
+relative_roots:
+  # default:
+  - app/views
+  # add a custom one:
+  - app/views-mobile
+```
+
+
 ### Fine-tuning
 
 Tasks may incorrectly report framework i18n keys as missing, also some patterns may not be detected.
